@@ -53,6 +53,20 @@ If you have both Python 3.8 and 3.9 installed, you can specify which version of 
 
 7. The converted PPT file will be saved in the same directory as the original PPT file with the name "output.pptx".
 
+## Troubleshooting
+### OpenCC Configuration Error
+If you encounter an error message that says "Can't find T2S/S2T configuration", it means that the OpenCC configuration file cannot be found. This may occur if you have not installed OpenCC or if the configuration file is not in the correct location.
+
+To troubleshoot this issue, you can try the following steps:
+
+1. Check that OpenCC is installed on your system. You can do this by running the command `pip show opencc` in your terminal. If it is not installed, you can install it using `pip install opencc`.
+
+2. Check that the configuration file is in the correct location. The default location for the T2S configuration file is **/usr/local/share/opencc/t2s.json** on Linux/Mac or **C:\Program Files (x86)\OpenCC\share\opencc\t2s.json** on Windows. The default location for the S2T configuration file is **/usr/local/share/opencc/s2t.json** on Linux/Mac or **C:\Program Files (x86)\OpenCC\share\opencc\s2t.json** on Windows. If the file is not in this location, you may need to download it from the OpenCC GitHub repository and move it to the correct location.
+
+3. If the configuration file is in the correct location but the error persists, you can try specifying the location of the file explicitly in the script. To do this, replace the line ```converter = opencc.OpenCC('t2s') or converter = opencc.OpenCC('s2t')``` with ```converter = opencc.OpenCC('/path/to/t2s.json') or converter = opencc.OpenCC('/path/to/s2t.json')```, where **/path/to/t2s.json** or **/path/to/s2t.json** is the absolute path to the configuration file on your system.
+
+If you continue to experience issues, please consult the OpenCC documentation or seek help from the OpenCC community.
+
 ## Notes
 - This program has been tested on macOS and should also work on Linux and Windows.
 - If you encounter any issues, make sure you have followed the above steps correctly and refer to the documentation of the Python packages used for more information.
